@@ -3,6 +3,7 @@ FROM roundcube/roundcubemail:1.6.9-apache AS build
 ARG DOMAIN=localhost
 
 RUN apt-get update && apt-get install -y \
+    expect \
     libapache2-mod-shib \
     mkcert
 RUN mkcert -cert-file /etc/ssl/certs/cert.pem \
