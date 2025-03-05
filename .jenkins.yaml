@@ -1,0 +1,15 @@
+---
+environment_variables:
+  ROUNDCUBE_VERSION: "1.6.9-apache-1"
+git:
+  branch: main
+triggers:
+  cron: "@daily"
+clean_workspace: true
+builders:
+  - docker
+docker_name: mail/roundcube
+docker_tags:
+  - "${ROUNDCUBE_VERSION}"
+  - "latest"
+docker_no_cache: true
