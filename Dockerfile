@@ -1,6 +1,6 @@
 FROM roundcube/roundcubemail:1.6.9-apache AS build
 
-ARG DOMAIN=localhost
+ARG DOMAIN="127.0.0.1 ::1 localhost mail.sunet.se mail.sunet.dev"
 
 RUN apt-get update && apt-get install -y \
     expect \
