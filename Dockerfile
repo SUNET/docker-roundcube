@@ -25,7 +25,7 @@ RUN echo 'TransferLog /dev/stdout'  >> /etc/apache2/apache2.conf
 RUN sed -i 's/default_bits=3072/default_bits=4096/' /usr/sbin/shib-keygen
 RUN a2enmod ssl rewrite headers proxy_http authz_groupfile remoteip
 RUN a2ensite shib
-RUN composer require \
+RUN composer require --no-interaction \
     pear/http_request \
     caxy/php-htmldiff \
     lolli42/finediff \
