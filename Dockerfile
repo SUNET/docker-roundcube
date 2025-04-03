@@ -13,8 +13,6 @@ RUN npm install -g less
 
 FROM build AS config
 COPY ./roundcube.conf /etc/apache2/sites-available/roundcube.conf
-COPY ./md-signer2.crt /etc/shibboleth/md-signer2.crt
-COPY ./shibboleth2.xml /etc/shibboleth/shibboleth2.xml
 COPY ./start.sh /start.sh
 
 RUN a2dissite 000-default
