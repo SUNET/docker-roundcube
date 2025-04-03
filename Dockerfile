@@ -5,10 +5,12 @@ ARG DOMAIN="127.0.0.1 ::1 localhost mail.sunet.se mail.sunet.dev"
 RUN apt-get update && apt-get install -y \
     expect \
     libapache2-mod-shib \
-    mkcert
+    mkcert \
+    npm
 RUN mkcert -cert-file /etc/ssl/certs/cert.pem \
 	  -key-file /etc/ssl/private/cert.key \
     ${DOMAIN}
+RUN npm install -g less
 
 FROM build AS config
 COPY ./shib.conf /etc/apache2/sites-available/shib.conf
@@ -23,5 +25,10 @@ RUN echo 'TransferLog /dev/stdout'  >> /etc/apache2/apache2.conf
 RUN sed -i 's/default_bits=3072/default_bits=4096/' /usr/sbin/shib-keygen
 RUN a2enmod ssl rewrite headers proxy_http authz_groupfile remoteip
 RUN a2ensite shib
+RUN composer require \
+    pear/http_request \
+    caxy/php-htmldiff \
+    lolli42/finediff \
+    sabre/vobject
 
 ENTRYPOINT ["/start.sh"]
