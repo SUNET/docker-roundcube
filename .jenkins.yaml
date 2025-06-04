@@ -1,6 +1,6 @@
 ---
 environment_variables:
-  ROUNDCUBE_VERSION: "1.6.9-apache-5"
+  ROUNDCUBE_VERSION: "1.6.11-apache-1"
 git:
   branch: main
 triggers:

@@ -1,4 +1,4 @@
-FROM roundcube/roundcubemail:1.6.9-apache AS build
+FROM roundcube/roundcubemail:1.6.11-apache AS build
 
 ARG DOMAIN="127.0.0.1 ::1 localhost mail.sunet.se mail.sunet.dev"
 
